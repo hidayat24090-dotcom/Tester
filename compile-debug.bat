@@ -30,21 +30,27 @@ javac --module-path "%JAVAFX_PATH%" ^
       src\com\sistemruangan\model\Ruangan.java ^
       src\com\sistemruangan\model\Peminjaman.java ^
       src\com\sistemruangan\model\User.java ^
+      src\com\sistemruangan\model\Gedung.java ^
       src\com\sistemruangan\model\StatistikRuangan.java ^
       src\com\sistemruangan\controller\RuanganController.java ^
       src\com\sistemruangan\controller\PeminjamanController.java ^
       src\com\sistemruangan\controller\UserController.java ^
+      src\com\sistemruangan\controller\GedungController.java ^
       src\com\sistemruangan\controller\LaporanController.java ^
       src\com\sistemruangan\view\BuktiPeminjamanDialog.java ^
       src\com\sistemruangan\view\LoginController.java ^
       src\com\sistemruangan\view\DashboardController.java ^
       src\com\sistemruangan\view\DaftarRuanganController.java ^
+      src\com\sistemruangan\view\DaftarGedungController.java ^
+      src\com\sistemruangan\view\DaftarRuanganPerGedungController.java ^
       src\com\sistemruangan\view\DataPeminjamanController.java ^
       src\com\sistemruangan\view\LaporanTransaksiController.java ^
       src\com\sistemruangan\view\UserLoginController.java ^
       src\com\sistemruangan\view\UserRegisterController.java ^
       src\com\sistemruangan\view\UserDashboardController.java ^
+      src\com\sistemruangan\view\UserGedungListController.java ^
       src\com\sistemruangan\view\UserRuanganListController.java ^
+      src\com\sistemruangan\view\UserRuanganPerGedungController.java ^
       src\com\sistemruangan\view\UserPeminjamanFormController.java ^
       src\com\sistemruangan\view\UserRiwayatController.java ^
       src\com\sistemruangan\view\UserProfileController.java ^
