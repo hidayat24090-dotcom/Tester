@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemruangan.view.DaftarRuanganController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox spacing="15.0" style="-fx-padding: 20;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 8;">
+                     <children>
+                        <Label text="📋 Daftar Ruangan">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnKembali" mnemonicParsing="false" onAction="#handleKembali" styleClass="secondary-button" text="← Kembali" />
+                     </children>
+                  </HBox>
+                  
+                  <Separator />
+                  
+                  <HBox spacing="20.0">
+                     <children>
+                        <VBox spacing="12.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-pref-width: 340; -fx-min-width: 340; -fx-max-width: 340;" HBox.hgrow="NEVER">
+                           <children>
+                              <Label text="Form Ruangan">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8;">
+                                 <children>
+                                    <Label text="Foto Ruangan">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <ImageView fx:id="imgPreview" fitHeight="180.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+                                       <image>
+                                          <Image url="@../images/default_room.png" />
+                                       </image>
+                                    </ImageView>
+                                    
+                                    <Label fx:id="lblFotoName" text="" textFill="#7f8c8d">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <Button fx:id="btnUploadFoto" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleUploadFoto" styleClass="primary-button" text="📷 Upload Foto" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- NEW: Gedung ComboBox -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Gedung: *" />
+                                    <ComboBox fx:id="cbGedung" maxWidth="1.7976931348623157E308" promptText="Pilih gedung" styleClass="combo-box" onAction="#handleGedungChange" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- NEW: Lantai ComboBox -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Lantai: *" />
+                                    <ComboBox fx:id="cbLantai" maxWidth="1.7976931348623157E308" promptText="Pilih lantai" styleClass="combo-box" disable="true" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Nama Ruangan: *" />
+                                    <TextField fx:id="txtNama" promptText="Nama ruangan" styleClass="text-field" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Jumlah Kursi: *" />
+                                    <TextField fx:id="txtKursi" promptText="Jumlah kursi" styleClass="text-field" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Fasilitas:" />
+                                    <TextArea fx:id="txtFasilitas" prefHeight="80.0" promptText="Contoh: Proyektor, HDMI (baik), AC, Whiteboard" styleClass="text-field" wrapText="true" />
+                                    <Label style="-fx-text-fill: #6c757d;" text="*Pisahkan dengan koma">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Status: *" />
+                                    <ComboBox fx:id="cbStatus" maxWidth="1.7976931348623157E308" promptText="Pilih status" styleClass="combo-box" />
+                                 </children>
+                              </VBox>
+                              
+                              <Separator />
+                              
+                              <VBox spacing="8.0">
+                                 <children>
+                                    <Button fx:id="btnTambah" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTambah" styleClass="primary-button" text="➕ Tambah" />
+                                    <Button fx:id="btnUpdate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleUpdate" styleClass="success-button" text="✏️ Update" />
+                                    <Button fx:id="btnHapus" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleHapus" styleClass="danger-button" text="🗑️ Hapus" />
+                                    <Button fx:id="btnClear" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClear" styleClass="secondary-button" text="🔄 Clear" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="txtSearch" onKeyReleased="#handleSearch" promptText="🔍 Cari ruangan..." styleClass="text-field" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#handleRefresh" styleClass="secondary-button" text="🔄 Refresh" />
+                                 </children>
+                              </HBox>
+                              
+                              <TableView fx:id="tableRuangan" prefHeight="500.0" styleClass="table-view">
+                                 <columns>
+                                    <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                                    <TableColumn fx:id="colGedung" prefWidth="120.0" text="Gedung" />
+                                    <TableColumn fx:id="colLantai" prefWidth="70.0" text="Lantai" />
+                                    <TableColumn fx:id="colNama" prefWidth="180.0" text="Nama Ruangan" />
+                                    <TableColumn fx:id="colKursi" prefWidth="70.0" text="Kursi" />
+                                    <TableColumn fx:id="colFasilitas" prefWidth="250.0" text="Fasilitas" />
+                                    <TableColumn fx:id="colStatus" prefWidth="100.0" text="Status" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  
+                  <Region prefHeight="30.0" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

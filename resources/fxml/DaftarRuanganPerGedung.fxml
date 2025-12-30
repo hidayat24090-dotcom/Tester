@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemruangan.view.DaftarRuanganPerGedungController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox spacing="20.0" style="-fx-padding: 20;">
+               <children>
+                  <!-- Header with Gedung Info -->
+                  <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-padding: 20; -fx-background-radius: 12;">
+                     <children>
+                        <Label text="🏢" style="-fx-font-size: 36px; -fx-text-fill: white;" />
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="lblGedungNama" text="Gedung A" style="-fx-text-fill: white;">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblGedungInfo" text="5 Lantai • 0 Ruangan" style="-fx-text-fill: rgba(255,255,255,0.9);">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button fx:id="btnKembali" mnemonicParsing="false" onAction="#handleKembali" text="← Kembali ke Gedung" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 8;" />
+                     </children>
+                  </HBox>
+                  
+                  <Separator />
+                  
+                  <!-- Filter & Form Layout -->
+                  <HBox spacing="20.0">
+                     <children>
+                        <!-- Form Ruangan -->
+                        <VBox spacing="12.0" styleClass="form-box" style="-fx-min-width: 340; -fx-max-width: 340;" HBox.hgrow="NEVER">
+                           <children>
+                              <Label text="Form Ruangan" styleClass="section-title">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              
+                              <!-- Foto Upload -->
+                              <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 8;">
+                                 <children>
+                                    <Label text="Foto Ruangan">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="imgPreview" fitHeight="160.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/default_room.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblFotoName" text="" textFill="#7f8c8d">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnUploadFoto" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleUploadFoto" styleClass="primary-button" text="📷 Upload" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Lantai -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Lantai: *">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cbLantai" maxWidth="1.7976931348623157E308" promptText="Pilih lantai" styleClass="combo-box" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Nama Ruangan -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Nama Ruangan: *">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtNama" promptText="Contoh: Ruang A101" styleClass="text-field" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Kursi -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Kapasitas Kursi: *">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtKursi" promptText="Jumlah kursi" styleClass="text-field" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Fasilitas -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Fasilitas:">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="txtFasilitas" prefHeight="70.0" promptText="Proyektor, AC, Whiteboard" styleClass="text-field" wrapText="true" />
+                                    <Label text="*Pisahkan dengan koma" style="-fx-text-fill: #7f8c8d; -fx-font-size: 9px;" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Status -->
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label text="Status: *">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cbStatus" maxWidth="1.7976931348623157E308" promptText="Pilih status" styleClass="combo-box" />
+                                 </children>
+                              </VBox>
+                              
+                              <Separator />
+                              
+                              <!-- Buttons -->
+                              <VBox spacing="8.0">
+                                 <children>
+                                    <Button fx:id="btnTambah" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTambah" styleClass="primary-button" text="➕ Tambah" />
+                                    <Button fx:id="btnUpdate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleUpdate" styleClass="success-button" text="✏️ Update" />
+                                    <Button fx:id="btnHapus" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleHapus" styleClass="danger-button" text="🗑️ Hapus" />
+                                    <Button fx:id="btnClear" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClear" styleClass="secondary-button" text="🔄 Clear" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                        
+                        <!-- Ruangan Cards -->
+                        <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <!-- Filter -->
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <ComboBox fx:id="cbFilterLantai" onAction="#handleFilter" prefWidth="120.0" promptText="Lantai" styleClass="combo-box" />
+                                    <ComboBox fx:id="cbFilterStatus" onAction="#handleFilter" prefWidth="120.0" promptText="Status" styleClass="combo-box" />
+                                    <TextField fx:id="txtSearch" onKeyReleased="#handleSearch" promptText="🔍 Cari..." styleClass="text-field" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#handleRefresh" styleClass="secondary-button" text="🔄" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Summary -->
+                              <HBox alignment="CENTER" spacing="30.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="3.0">
+                                       <children>
+                                          <Label text="Total" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;" />
+                                          <Label fx:id="lblTotal" text="0" style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #2c3e50;" />
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" />
+                                    <VBox alignment="CENTER" spacing="3.0">
+                                       <children>
+                                          <Label text="Tersedia" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;" />
+                                          <Label fx:id="lblTersedia" text="0" styleClass="status-tersedia" style="-fx-font-weight: bold; -fx-font-size: 20px;" />
+                                       </children>
+                                    </VBox>
+                                    <Separator orientation="VERTICAL" />
+                                    <VBox alignment="CENTER" spacing="3.0">
+                                       <children>
+                                          <Label text="Dipinjam" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;" />
+                                          <Label fx:id="lblDipinjam" text="0" styleClass="status-dipinjam" style="-fx-font-weight: bold; -fx-font-size: 20px;" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Cards -->
+                              <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                                 <content>
+                                    <FlowPane fx:id="flowPaneRuangan" hgap="15.0" vgap="15.0" style="-fx-padding: 5;" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemruangan.view.DashboardController">
+   <children>
+      <!-- Background Gradient -->
+      <AnchorPane style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+      
+      <!-- Main ScrollPane for Responsive -->
+      <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent; -fx-background: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-padding: 20;">
+               <children>
+                  <!-- Header - Compact -->
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Label style="-fx-font-size: 36px; -fx-text-fill: white;" text="🏢">
+                                 <effect>
+                                    <DropShadow color="#00000066" radius="10.0" />
+                                 </effect>
+                              </Label>
+                              
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label styleClass="title-label" text="Dashboard Admin" style="-fx-text-fill: white;">
+                                       <font>
+                                          <Font name="System Bold" size="28.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow color="#00000066" radius="15.0" />
+                                       </effect>
+                                    </Label>
+                                    
+                                    <Label text="Sistem Inventaris &amp; Peminjaman Ruangan" style="-fx-text-fill: rgba(255,255,255,0.9);">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <Label fx:id="lblWelcome" text="Selamat datang, Admin!" style="-fx-text-fill: rgba(255,255,255,0.8);">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Notification Badge - Compact -->
+                  <HBox fx:id="notificationBox" alignment="CENTER" spacing="8.0" visible="false" managed="false" style="-fx-background-color: rgba(255,255,255,0.2); -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 8;">
+                     <children>
+                        <Label text="⚠️" style="-fx-font-size: 20px;" />
+                        <VBox spacing="2.0">
+                           <children>
+                              <Label fx:id="lblNotification" text="Ada 0 pengajuan peminjaman menunggu persetujuan" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px;" />
+                              <Label text="Klik menu 'Persetujuan' untuk melihat detail" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 10px;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  
+                  <!-- Menu Cards Grid (2x2) - Compact & Responsive -->
+                  <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <!-- Card 1: Daftar Ruangan -->
+                        <VBox alignment="CENTER" spacing="15.0" styleClass="dashboard-card" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 8); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <Region style="-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2); -fx-background-radius: 40; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80; -fx-max-height: 80;">
+                                             <effect>
+                                                <DropShadow color="#667eea66" radius="12.0" />
+                                             </effect>
+                                          </Region>
+                                          <Label text="📋" style="-fx-font-size: 40px;">
+                                             <effect>
+                                                <DropShadow color="#00000033" radius="5.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    
+                                    <Label text="Kelola Gedung">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <Label alignment="CENTER" text="Kelola gedung dan&#10;ruangan di dalamnya" textAlignment="CENTER" wrapText="true" style="-fx-text-fill: #7f8c8d;">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              
+                              <Button fx:id="btnRuangan" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDaftarRuangan" styleClass="card-button" text="Buka" style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20; -fx-padding: 10 30 10 30;">
+                                 <effect>
+                                    <DropShadow color="#667eea66" radius="8.0" />
+                                 </effect>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        
+                        <!-- Card 2: Data Peminjaman -->
+                        <VBox alignment="CENTER" spacing="15.0" styleClass="dashboard-card" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 8); -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <Region style="-fx-background-color: linear-gradient(to bottom right, #f093fb, #f5576c); -fx-background-radius: 40; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80; -fx-max-height: 80;">
+                                             <effect>
+                                                <DropShadow color="#f093fb66" radius="12.0" />
+                                             </effect>
+                                          </Region>
+                                          <Label text="📝" style="-fx-font-size: 40px;">
+                                             <effect>
+                                                <DropShadow color="#00000033" radius="5.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    
+                                    <Label text="Data Peminjaman" style="-fx-text-fill: #2c3e50;">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <Label alignment="CENTER" text="Kelola peminjaman&#10;dan status ruangan" textAlignment="CENTER" wrapText="true" style="-fx-text-fill: #7f8c8d;">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              
+                              <Button fx:id="btnPeminjaman" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDataPeminjaman" styleClass="card-button" text="Buka" style="-fx-background-color: linear-gradient(to right, #f093fb, #f5576c); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20; -fx-padding: 10 30 10 30;">
+                                 <effect>
+                                    <DropShadow color="#f093fb66" radius="8.0" />
+                                 </effect>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        
+                        <!-- Card 3: Persetujuan Peminjaman -->
+                        <VBox alignment="CENTER" spacing="15.0" styleClass="dashboard-card" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 8); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <Region style="-fx-background-color: linear-gradient(to bottom right, #fa709a, #fee140); -fx-background-radius: 40; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80; -fx-max-height: 80;">
+                                             <effect>
+                                                <DropShadow color="#fa709a66" radius="12.0" />
+                                             </effect>
+                                          </Region>
+                                          <Label text="✅" style="-fx-font-size: 40px;">
+                                             <effect>
+                                                <DropShadow color="#00000033" radius="5.0" />
+                                             </effect>
+                                          </Label>
+                                          
+                                          <!-- Badge for pending count -->
+                                          <StackPane fx:id="badgePending" visible="false" managed="false" StackPane.alignment="TOP_RIGHT" translateX="25.0" translateY="-25.0">
+                                             <children>
+                                                <Circle radius="15.0" fill="#e74c3c" stroke="white" strokeWidth="2.5" />
+                                                <Label fx:id="lblBadgeCount" text="0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11px;" />
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                    </StackPane>
+                                    
+                                    <Label text="Persetujuan" style="-fx-text-fill: #2c3e50;">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <Label alignment="CENTER" text="Setujui peminjaman&#10;kegiatan non-kuliah" textAlignment="CENTER" wrapText="true" style="-fx-text-fill: #7f8c8d;">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              
+                              <Button fx:id="btnApproval" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleApproval" styleClass="card-button" text="Buka" style="-fx-background-color: linear-gradient(to right, #fa709a, #fee140); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20; -fx-padding: 10 30 10 30;">
+                                 <effect>
+                                    <DropShadow color="#fa709a66" radius="8.0" />
+                                 </effect>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        
+                        <!-- Card 4: Laporan -->
+                        <VBox alignment="CENTER" spacing="15.0" styleClass="dashboard-card" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 8); -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <Region style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe); -fx-background-radius: 40; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80; -fx-max-height: 80;">
+                                             <effect>
+                                                <DropShadow color="#4facfe66" radius="12.0" />
+                                             </effect>
+                                          </Region>
+                                          <Label text="📊" style="-fx-font-size: 40px;">
+                                             <effect>
+                                                <DropShadow color="#00000033" radius="5.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    
+                                    <Label text="Laporan" style="-fx-text-fill: #2c3e50;">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    
+                                    <Label alignment="CENTER" text="Lihat statistik dan&#10;laporan transaksi" textAlignment="CENTER" wrapText="true" style="-fx-text-fill: #7f8c8d;">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              
+                              <Button fx:id="btnLaporan" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLaporan" styleClass="card-button" text="Buka" style="-fx-background-color: linear-gradient(to right, #4facfe, #00f2fe); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 20; -fx-padding: 10 30 10 30;">
+                                 <effect>
+                                    <DropShadow color="#4facfe66" radius="8.0" />
+                                 </effect>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="200.0" prefHeight="220.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="200.0" prefHeight="220.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  
+                  <!-- Logout Button - Compact -->
+                  <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" text="🚪 Logout" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 10 40 10 40; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;">
+                     <effect>
+                        <DropShadow color="#00000033" radius="8.0" />
+                     </effect>
+                  </Button>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

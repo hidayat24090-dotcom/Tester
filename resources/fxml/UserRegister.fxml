@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemruangan.view.UserRegisterController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <content>
+            <VBox alignment="CENTER" spacing="15.0" style="-fx-min-height: 600px;" styleClass="login-box">
+               <children>
+                  <Label styleClass="title-label" text="Registrasi User Baru">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label text="Lengkapi data untuk membuat akun">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  
+                        <Separator />
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="Username: *" />
+                        <TextField fx:id="txtUsername" promptText="Masukkan username" styleClass="text-field" />
+                        <Label fx:id="lblUsernameError" styleClass="error-label" text="Username sudah digunakan" visible="false">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="Password: *" />
+                        <PasswordField fx:id="txtPassword" promptText="Masukkan password" styleClass="text-field" />
+                     </children>
+                  </VBox>
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="Konfirmasi Password: *" />
+                        <PasswordField fx:id="txtConfirmPassword" promptText="Ketik ulang password" styleClass="text-field" />
+                     </children>
+                  </VBox>
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="Nama Lengkap: *" />
+                        <TextField fx:id="txtNamaLengkap" promptText="Masukkan nama lengkap" styleClass="text-field" />
+                     </children>
+                  </VBox>
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="Email:" />
+                        <TextField fx:id="txtEmail" promptText="contoh@email.com" styleClass="text-field" />
+                     </children>
+                  </VBox>
+                  
+                        <VBox spacing="8.0">
+                     <children>
+                        <Label text="No. Telepon:" />
+                        <TextField fx:id="txtTelepon" promptText="08xxxxxxxxxx" styleClass="text-field" />
+                     </children>
+                  </VBox>
+                  
+                        <Label fx:id="errorLabel" styleClass="error-label" text="Error message" visible="false" wrapText="true" />
+                  
+                        <Button fx:id="btnRegister" maxWidth="1.7976931348623157E308" onAction="#handleRegister" styleClass="primary-button" text="Daftar Sekarang">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  
+                        <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label text="Sudah punya akun?" />
+                        <Hyperlink onAction="#handleBackToLogin" text="Login di sini" />
+                     </children>
+                  </HBox>
+                  
+                        <Label styleClass="info-label" text="* Field wajib diisi">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="150.0" top="50.0" />
+               </VBox.margin>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>
