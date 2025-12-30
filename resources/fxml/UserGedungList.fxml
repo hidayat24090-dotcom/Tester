@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" styleClass="root-pane" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.sistemruangan.view.UserGedungListController">
+   <children>
+      <VBox spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" 
+            AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" 
+                  style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-padding: 20; -fx-background-radius: 12;">
+               <children>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="🏢 Pilih Gedung" style="-fx-text-fill: white;">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="Pilih gedung untuk melihat ruangan yang tersedia" 
+                               style="-fx-text-fill: rgba(255,255,255,0.9);">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Button fx:id="btnKembali" text="← Kembali" onAction="#handleKembali"
+                          style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 8;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            
+            <Separator />
+            
+            <!-- Search Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" 
+                  style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);">
+               <children>
+                  <Label text="🔍">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSearch" promptText="Cari gedung..." 
+                             onKeyReleased="#handleSearch" styleClass="text-field" 
+                             HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnRefresh" text="🔄 Refresh" 
+                          onAction="#handleRefresh" styleClass="secondary-button" />
+               </children>
+            </HBox>
+            
+            <!-- Gedung Cards (Scrollable) -->
+            <StackPane VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="scrollPane" fitToWidth="true" 
+                              style="-fx-background-color: transparent; -fx-background: transparent;">
+                     <content>
+                        <FlowPane fx:id="flowPaneGedung" hgap="20.0" vgap="20.0" 
+                                  style="-fx-padding: 10;" />
+                     </content>
+                  </ScrollPane>
+                  
+                  <!-- Loading Indicator -->
+                  <ProgressIndicator fx:id="progressIndicator" visible="false" />
+               </children>
+            </StackPane>
+            
+            <!-- Summary Footer -->
+            <HBox alignment="CENTER" spacing="40.0" 
+                  style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);">
+               <children>
+                  <VBox alignment="CENTER" spacing="3.0">
+                     <children>
+                        <Label text="Total Gedung">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTotalGedung" text="0" styleClass="title-label">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <Separator orientation="VERTICAL" prefHeight="50.0" />
+                  
+                  <VBox alignment="CENTER" spacing="3.0">
+                     <children>
+                        <Label text="Total Ruangan">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTotalRuangan" text="0" styleClass="title-label">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <Region HBox.hgrow="ALWAYS" />
+                  
+                  <VBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label text="✨ Klik gedung untuk melihat ruangan">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

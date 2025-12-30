@@ -31,7 +31,7 @@ public class UserDashboardController {
     
     @FXML
     private void handleLihatRuangan() {
-        MainApp.showUserRuanganList();
+        MainApp.showUserGedungList();
     }
     
     @FXML

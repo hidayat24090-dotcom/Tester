@@ -8,6 +8,8 @@ import com.sistemruangan.model.Gedung;
 import com.sistemruangan.model.Peminjaman;
 import com.sistemruangan.model.Ruangan;
 import com.sistemruangan.util.SessionManager;
+import com.sistemruangan.controller.GedungController;
+import com.sistemruangan.model.Gedung;
 import com.sistemruangan.util.DialogUtil;
 import javafx.scene.layout.StackPane;
 import javafx.collections.FXCollections;
